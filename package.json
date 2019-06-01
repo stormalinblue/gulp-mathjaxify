@@ -1,0 +1,26 @@
+{
+  "name": "gulp-mathjax-node-page",
+  "version": "1.0.0",
+  "description": "A gulp wrapper for mathjax-node-page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stormalinblue/gulp-mathjax-node-page.git"
+  },
+  "keywords": [
+    "gulp",
+    "mathjax",
+    "math",
+    "render",
+    "html"
+  ],
+  "author": "Muktaka Joshipura",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/stormalinblue/gulp-mathjax-node-page/issues"
+  },
+  "homepage": "https://github.com/stormalinblue/gulp-mathjax-node-page#readme"
+}
