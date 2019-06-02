@@ -1,6 +1,6 @@
 {
-  "name": "gulp-mathjax-node-page",
-  "version": "1.0.0",
+  "name": "gulp-mathjaxify",
+  "version": "0.0.1",
   "description": "A gulp wrapper for mathjax-node-page",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,18 @@
   "bugs": {
     "url": "https://github.com/stormalinblue/gulp-mathjax-node-page/issues"
   },
-  "homepage": "https://github.com/stormalinblue/gulp-mathjax-node-page#readme"
+  "homepage": "https://github.com/stormalinblue/gulp-mathjax-node-page#readme",
+  "devDependencies": {
+    "@types/gulp": "^4.0.6",
+    "@types/jsdom": "^12.2.3",
+    "@types/node": "^12.0.4",
+    "eslint": "^5.16.0",
+    "gulp": "^4.0.2",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1",
+    "vinyl": "^2.2.0"
+  },
+  "dependencies": {
+    "mathjax-node-page": "^3.2.0"
+  }
 }
