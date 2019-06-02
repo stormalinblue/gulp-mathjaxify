@@ -1,18 +1,19 @@
-import { mjpage } from "mathjax-node-page";
+import { ConfigOptions, mjpage, TypesetOptions } from "mathjax-node-page";
 import { Readable, Transform, TransformCallback } from "stream";
 import * as Vinyl from "vinyl";
 
 /**
  * Gulp plugin for mathjax-node-page
- * @param mjpageConfig Page config options to be passed to mathjax-node-page
- * @param mjnodeConfig MathJax-node config options to be passed to
+ * @param configOptions Page config options to be passed to mathjax-node-page
+ * @param typesetOptions MathJax-node config options to be passed to
  *                     mathjax-node-page
  */
-export function mathjaxify(mjpageConfig?, mjnodeConfig?): Transform {
+export function mathjaxify(
+  configOptions?: ConfigOptions, typesetOptions?: TypesetOptions): Transform {
   const transformStream: Transform = new Transform({ objectMode: true });
 
-  const pageConfig = mjpageConfig || {};
-  const nodeConfig = mjnodeConfig || {};
+  const pageConfig = configOptions || {};
+  const nodeConfig = typesetOptions || {};
 
   transformStream._transform = (
     file: Vinyl, encoding, callback: TransformCallback) => {
@@ -52,8 +53,8 @@ export function mathjaxify(mjpageConfig?, mjnodeConfig?): Transform {
  * Handles string input into mathjax-node-page
  * @param file The Vinyl file to convert
  * @param body The body text of the Vinyl file
- * @param pageConfig Page config options to be passed to mathjax-node-page
- * @param nodeConfig MathJax-node config options to be passed to
+ * @param configOptions Page config options to be passed to mathjax-node-page
+ * @param typesetOptions MathJax-node config options to be passed to
  *                   mathjax-node-page
  * @param transform Transform stream to output to
  * @param callback Callback to call after finishing
@@ -61,12 +62,12 @@ export function mathjaxify(mjpageConfig?, mjnodeConfig?): Transform {
 function convert(
   file: Vinyl,
   body: string,
-  pageConfig,
-  nodeConfig,
+  configOptions: any,
+  typesetOptions: any,
   transform: Transform,
   callback: TransformCallback) {
 
-  mjpage(body, pageConfig, nodeConfig, (output) => {
+  mjpage(body, configOptions, typesetOptions, (output: string) => {
     file.contents = Buffer.from(output);
     transform.push(file);
     callback();
@@ -77,8 +78,8 @@ function convert(
  * Handles Stream input into mathjax-node-page
  * @param file Vinyl file to convert
  * @param stream Stream to collect body text from
- * @param pageConfig Page config options to be passed to mathjax-node-page
- * @param nodeConfig MathJax-node config options to be passed to
+ * @param configOptions Page config options to be passed to mathjax-node-page
+ * @param typesetOptions MathJax-node config options to be passed to
  *                   mathjax-node-page
  * @param transform Transform stream to output to
  * @param callback Callback to call after finishing
@@ -86,13 +87,13 @@ function convert(
 async function streamConvert(
   file: Vinyl,
   stream: Readable,
-  pageConfig,
-  nodeConfig,
+  configOptions: ConfigOptions,
+  typesetOptions: TypesetOptions,
   transform: Transform,
   callback: TransformCallback) {
 
   const body = (await streamReader(stream));
-  convert(file, body, pageConfig, nodeConfig, transform, callback);
+  convert(file, body, configOptions, typesetOptions, transform, callback);
 }
 
 /**
@@ -104,7 +105,7 @@ async function streamReader(
   stream: Readable, encoding?: BufferEncoding): Promise<string> {
 
   encoding = encoding || "utf-8";
-  const chunks = [];
+  const chunks: any[] = [];
   return new Promise<string>((resolve, reject) => {
     stream.on("data", (chunk) => chunks.push(chunk));
     stream.on("error", reject);
