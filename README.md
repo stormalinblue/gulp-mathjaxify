@@ -2,6 +2,8 @@
 
 A simple [`gulp`](https://gulpjs.com) plugin to statically render your math expressions in larger documents using gulp. Specifically, a wrapper around [`mathjax-node-page`](https://www.npmjs.com/package/mathjax-node-page).
 
+[![Build Status](https://travis-ci.org/stormalinblue/gulp-mathjaxify.svg?branch=master)](https://travis-ci.org/stormalinblue/gulp-mathjaxify)
+
 ## Installation
 
 `gulp-mathjaxify` has not been published yet.
