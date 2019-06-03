@@ -5,8 +5,7 @@ import * as Vinyl from "vinyl";
 /**
  * Gulp plugin for mathjax-node-page
  * @param configOptions Page config options to be passed to mathjax-node-page
- * @param typesetOptions MathJax-node config options to be passed to
- *                     mathjax-node-page
+ * @param typesetOptions Typesetting options to be passed to mathjax-node-page
  */
 export function mathjaxify(
   configOptions?: ConfigOptions, typesetOptions?: TypesetOptions): Transform {
