@@ -68,3 +68,9 @@ typings/
 
 # Work in progress
 wip/
+
+# TypeScript incremental compilation files
+dist/tsconfig.tsbuildinfo
+
+# Test outputs
+test-resources/output/
