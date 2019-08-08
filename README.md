@@ -6,7 +6,11 @@ A simple [`gulp`](https://gulpjs.com) plugin to statically render your math expr
 
 ## Installation
 
-`gulp-mathjaxify` has not been published yet.
+Install from the npm registry by entering the following command into the shell.
+
+```
+npm install gulp-mathjaxify
+```
 
 ## Usage
 
