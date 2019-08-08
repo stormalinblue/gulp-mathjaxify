@@ -69,12 +69,8 @@ typings/
 # Work in progress
 wip/
 
-# TypeScript incremental compilation files
-dist/tsconfig.tsbuildinfo
-
 # Test outputs
 test-resources/output/
-
 
 # npmignore - content above this line is automatically generated and modifications may be omitted
 # see npmjs.com/npmignore for more details.
@@ -87,3 +83,4 @@ tslint.json
 tsconfig.json
 .gitignore
 .editorconfig
+.travis.yml
