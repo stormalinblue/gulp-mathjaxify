@@ -6,3 +6,10 @@ install:
 script:
  - tsc
  - npm test
+deploy:
+  provider: npm
+  email: stormalinblue@gmail.com
+  api_key: $NPM_PUBLISH_TOKEN
+  on:
+    tags: true
+
