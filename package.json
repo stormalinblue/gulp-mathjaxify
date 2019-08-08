@@ -1,6 +1,6 @@
 {
   "name": "gulp-mathjaxify",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "A gulp wrapper for mathjax-node-page",
   "main": "./dist/lib/index.js",
   "scripts": {
