@@ -22,13 +22,13 @@ const { mathjaxify } = require("gulp-mathjaxify");
 // Refer to https://www.npmjs.com/package/mathjax-node-page#usage
 
 // Render equations as html
-src("./src/")
+src("./src/*.html")
     .pipe(mathjaxify({ output: "html" }))
     .pipe(dest("./dist/"))
 
 // Render equations as svg
 // Interpret single-dollar expressions as inline expressions
-src("./src/")
+src("./src/*.html")
     .pipe(mathjaxify({ output: "svg", singleDollars: true }))
     .pipe(dest("./dist/"))
 ```
