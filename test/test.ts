@@ -20,34 +20,42 @@ function outputPath(filename: string): string {
 }
 
 function test(
-  inputFile: string, configOptions: any, typesetOptions: any): void {
+  inputFile: string,
+  configOptions: any,
+  typesetOptions: any,
+  done: () => void): void {
+
   src(inputPath(inputFile))
     .pipe(mathjaxify(configOptions, typesetOptions))
-    .pipe(dest(OUTPUT));
-  expect(readFileSync(expectedPath(inputFile)).toString())
-    .to.be.equal(readFileSync(outputPath(inputFile)).toString());
+    .pipe(dest(OUTPUT)).on("end", () => {
+      expect(readFileSync(expectedPath(inputFile)).toString())
+        .to.be.equal(readFileSync(outputPath(inputFile)).toString());
+      done();
+    });
 }
 
 describe("Converting math to <svg> elements", () => {
-  it("should create 1 svg with 1 display 1 inline", () => {
-    test("svg-1i1d-0i.html", { input: ["TeX"] }, { svg: true });
+  it("should create 1 svg with 1 display 1 inline", (done) => {
+    test("svg-1i1d-0i.html", { input: ["TeX"] }, { svg: true }, done);
   });
-  it("should create 2 svg with 1 display 1 inline", () => {
+  it("should create 2 svg with 1 display 1 inline", (done) => {
     test(
       "svg-1i1d-1i.html",
       { input: ["TeX"], singleDollars: true },
-      { svg: true });
+      { svg: true },
+      done);
   });
 });
 
 describe("Converting math to HTML elements", () => {
-  it("should create 1 svg with 1 display 1 inline", () => {
-    test("html-1i1d-0i.html", { input: ["TeX"] }, { html: true });
+  it("should create 1 svg with 1 display 1 inline", (done) => {
+    test("html-1i1d-0i.html", { input: ["TeX"] }, { html: true }, done);
   });
-  it("should create 2 svg with 1 display 1 inline", () => {
+  it("should create 2 svg with 1 display 1 inline", (done) => {
     test(
       "html-1i1d-1i.html",
       { input: ["TeX"], singleDollars: true },
-      { html: true });
+      { html: true },
+      done);
   });
 });
